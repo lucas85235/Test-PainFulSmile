@@ -64,6 +64,7 @@ public class Player : MonoBehaviour
 
     private void OnDeath()
     {
-        HudUI.Instance.GameOverPopup(GameManager.Instance.Score);
+        GameManager.Instance.GameOver();
+        gameObject.SetActive(false);
     }
 }

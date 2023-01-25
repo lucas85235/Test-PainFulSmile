@@ -2287,6 +2287,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2093063894}
   - component: {fileID: 2093063893}
+  - component: {fileID: 2093063895}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -2309,8 +2310,6 @@ MonoBehaviour:
   enemysPrefab:
   - {fileID: 1466176235769637507, guid: 329364a0181e3634194b46046c552815, type: 3}
   - {fileID: 7654314877531364532, guid: db945c1710f2f1b478377f9b32a1d0bf, type: 3}
-  enemySpawnInterval: 5
-  gameDuration: 3
   score: 0
 --- !u!4 &2093063894
 Transform:
@@ -2327,6 +2326,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2093063895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093063892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce648807fc957444936a95b1f322358, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoLoad: 0
 --- !u!1 &2098066521
 GameObject:
   m_ObjectHideFlags: 0
