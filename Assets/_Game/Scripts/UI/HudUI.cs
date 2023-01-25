@@ -9,6 +9,7 @@ public class HudUI : MonoBehaviour
 {
     [Header("HUD")]
     [SerializeField] private TextMeshProUGUI scoreText;
+    [SerializeField] private TextMeshProUGUI timeText;
 
     [Header("GameOver")]
     [SerializeField] private Popup gameOverPopup;
@@ -37,6 +38,14 @@ public class HudUI : MonoBehaviour
     private void MenuButton()
     {
         SceneManager.LoadScene("Menu");
+    }
+
+    public void UpdateTimer(int timeInSeconds)
+    {
+        int minutes = Mathf.FloorToInt(timeInSeconds / 60);
+        int seconds = timeInSeconds % 60;
+        var formattedTime = string.Format("{0:00}:{1:00}", minutes, seconds);
+        timeText.text = $"TIME: {formattedTime}";
     }
 
     public void UpdateScore(int score)

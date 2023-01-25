@@ -28,10 +28,11 @@ public class GameManager : MonoBehaviour
     private void FixedUpdate()
     {
         _gameTimer -= Time.fixedDeltaTime;
+        HudUI.Instance.UpdateTimer((int)_gameTimer);
 
         if (_gameTimer <= 0)
         {
-            Debug.Log("Game Over! Your final score is: " + score);
+            HudUI.Instance.GameOverPopup(score);
             return;
         }
 
