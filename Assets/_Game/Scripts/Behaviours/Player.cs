@@ -6,9 +6,12 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 90f;
+    [SerializeField] private Vector2 screenLimits = new Vector2(8f, 4.25f);
+    [SerializeField] private Life life;
     [SerializeField] private List<Transform> bulletSideSpawns;
 
     private Shoot _shoot;
+    public Life Life { get => life; }
 
     private void Awake()
     {
@@ -38,7 +41,16 @@ public class Player : MonoBehaviour
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
             Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
             transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+            LimitToScreen();
         }
+    }
+
+    private void LimitToScreen()
+    {
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, -screenLimits.x, screenLimits.x);
+        pos.y = Mathf.Clamp(pos.y, -screenLimits.y, screenLimits.y);
+        transform.position = pos;
     }
 
     private void SideShoot()
