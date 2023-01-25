@@ -6,9 +6,14 @@ public class Player : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
     [SerializeField] private float rotationSpeed = 90f;
-    [SerializeField] private Rigidbody2D bulletPrefab;
-    [SerializeField] private Transform bulletSpawn;
     [SerializeField] private List<Transform> bulletSideSpawns;
+
+    private Shoot _shoot;
+
+    private void Awake()
+    {
+        _shoot = GetComponent<Shoot>();
+    }
 
     private void Update()
     {
@@ -16,7 +21,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0)) // || Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot(bulletSpawn);
+            _shoot.ShootBullet();
         }
         if (Input.GetMouseButtonDown(1)) // || Input.GetKeyDown(KeyCode.Space))
         {
@@ -36,18 +41,11 @@ public class Player : MonoBehaviour
         }
     }
 
-    private void Shoot(Transform spaw)
-    {
-        var bullet = Instantiate(bulletPrefab, spaw.position, spaw.rotation);
-        bullet.AddForce(bullet.transform.right * 500f);
-        Destroy(bullet.gameObject, 2f);
-    }
-
     private void SideShoot()
     {
         foreach (var item in bulletSideSpawns)
         {
-            Shoot(item);
+            _shoot.ShootBullet(item);
         }
     }
 }
