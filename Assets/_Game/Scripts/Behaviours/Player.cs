@@ -16,6 +16,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _shoot = GetComponent<Shoot>();
+        life.OnDeath.AddListener(OnDeath);
     }
 
     private void Update()
@@ -59,5 +60,10 @@ public class Player : MonoBehaviour
         {
             _shoot.ShootBullet(item);
         }
+    }
+
+    private void OnDeath()
+    {
+        HudUI.Instance.GameOverPopup(GameManager.Instance.Score);
     }
 }

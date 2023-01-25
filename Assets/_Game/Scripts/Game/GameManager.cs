@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
 
     private float _gameTimer;
     private float _enemyTimer;
+    public int Score { get => score; }
 
     public static GameManager Instance;
 
@@ -21,6 +22,7 @@ public class GameManager : MonoBehaviour
         Instance = this;
         _gameTimer = gameDuration;
         _enemyTimer = enemySpawnInterval;
+        HudUI.Instance.UpdateScore(score);
     }
 
     private void FixedUpdate()
@@ -45,5 +47,6 @@ public class GameManager : MonoBehaviour
     public void AddScore()
     {
         score++;
+        HudUI.Instance.UpdateScore(score);
     }
 }
