@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] private GameObject[] enemysPrefab;
+    [SerializeField] private Transform[] spawPoints;
 
     [Tooltip("Duration of the game in seconds")]
     [SerializeField] private int score = 0;
@@ -49,7 +50,8 @@ public class GameManager : MonoBehaviour
         if (_enemyTimer <= 0)
         {
             var enemy = enemysPrefab[Random.Range(0, enemysPrefab.Length)];
-            Instantiate(enemy, new Vector3(Random.Range(-8f, 8f), 0, 0), Quaternion.identity);
+            var spawPoint = spawPoints[Random.Range(0, spawPoints.Length)];
+            Instantiate(enemy, spawPoint.position, Quaternion.identity);
             _enemyTimer = _enemySpawnInterval;
         }
     }

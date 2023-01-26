@@ -27,6 +27,7 @@ public class ShipAI : MonoBehaviour
     protected void FollowPlayer()
     {
         // transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, followSpeed * Time.deltaTime);
+        if (_player == null) return;
         agent.SetDestination(_player.transform.position);
         LookAtPlayer();
     }

@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b059a08bcf7a247a70c1649d6e20c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 1
+  followSpeed: 0.9
   damage: 15
   life: {fileID: 1837429268586192262}
   agent: {fileID: 2310212958080982650}

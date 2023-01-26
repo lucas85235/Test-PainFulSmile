@@ -14,10 +14,12 @@ public class Bullet : MonoBehaviour
             if (targetTag == Target.Player && other.TryGetComponent(out Player player))
             {
                 player.Life.TakeDamage(damage);
+                Destroy(gameObject);
             }
             if (targetTag == Target.Enemy && other.TryGetComponent(out ShipAI ai))
             {
                 ai.Life.TakeDamage(damage);
+                Destroy(gameObject);
             }
         }
     }

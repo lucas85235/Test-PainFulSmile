@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -9,6 +10,9 @@ public class Player : MonoBehaviour
     [SerializeField] private Vector2 screenLimits = new Vector2(8f, 4.25f);
     [SerializeField] private Life life;
     [SerializeField] private List<Transform> bulletSideSpawns;
+
+    private float sideShootCoolDown = 1f;
+    private bool canSideShoot = true;
 
     private Shoot _shoot;
     public Life Life { get => life; }
@@ -27,8 +31,10 @@ public class Player : MonoBehaviour
         {
             _shoot.ShootBullet();
         }
-        if (Input.GetMouseButtonDown(1)) // || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(1) && canSideShoot) // || Input.GetKeyDown(KeyCode.Space))
         {
+            canSideShoot = false;
+            Invoke(nameof(SideShootCoolDown), sideShootCoolDown);
             SideShoot();
         }
     }
@@ -37,6 +43,7 @@ public class Player : MonoBehaviour
     {
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.position += (Vector3)movement.normalized * speed * Time.deltaTime;
+
         if (movement != Vector2.zero)
         {
             float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
@@ -66,5 +73,10 @@ public class Player : MonoBehaviour
     {
         GameManager.Instance.GameOver();
         gameObject.SetActive(false);
+    }
+
+    private void SideShootCoolDown()
+    {
+        canSideShoot = true;
     }
 }

@@ -7,7 +7,7 @@ public class SaveOptions : MonoBehaviour
     [SerializeField] private bool autoLoad = true;
 
     private int sessionTimerInMinutes = 120;
-    private float spawTimerInSeconds = 1.8f;
+    private float spawTimerInSeconds = 2.5f;
 
     public int SessionTimerInSeconds { get => sessionTimerInMinutes; }
     public float SpawTimerInSeconds { get => spawTimerInSeconds; }
