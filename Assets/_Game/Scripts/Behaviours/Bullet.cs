@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] protected GameObject explosion;
     [SerializeField] private Target targetTag = Target.Player;
     [SerializeField] private int damage = 15;
 
@@ -13,11 +14,13 @@ public class Bullet : MonoBehaviour
         {
             if (targetTag == Target.Player && other.TryGetComponent(out Player player))
             {
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 player.Life.TakeDamage(damage);
                 Destroy(gameObject);
             }
             if (targetTag == Target.Enemy && other.TryGetComponent(out ShipAI ai))
             {
+                Instantiate(explosion, transform.position, Quaternion.identity);
                 ai.Life.TakeDamage(damage);
                 Destroy(gameObject);
             }

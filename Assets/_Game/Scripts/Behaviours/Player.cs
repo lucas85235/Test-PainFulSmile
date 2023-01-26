@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     [SerializeField] private float rotationSpeed = 90f;
     [SerializeField] private Vector2 screenLimits = new Vector2(8f, 4.25f);
     [SerializeField] private Life life;
+    [SerializeField] protected GameObject explosion;
     [SerializeField] private List<Transform> bulletSideSpawns;
 
     private float sideShootCoolDown = 1f;
@@ -44,13 +45,15 @@ public class Player : MonoBehaviour
         Vector2 movement = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         transform.position += (Vector3)movement.normalized * speed * Time.deltaTime;
 
-        if (movement != Vector2.zero)
-        {
-            float angle = Mathf.Atan2(movement.y, movement.x) * Mathf.Rad2Deg;
-            Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
-            LimitToScreen();
-        }
+        Vector2 mousePos = Input.mousePosition;
+        Vector2 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        Quaternion targetRotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, rotationSpeed * Time.deltaTime);
+
+        LimitToScreen();
     }
 
     private void LimitToScreen()
@@ -71,6 +74,7 @@ public class Player : MonoBehaviour
 
     private void OnDeath()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         GameManager.Instance.GameOver();
         gameObject.SetActive(false);
     }

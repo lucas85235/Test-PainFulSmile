@@ -2310,6 +2310,7 @@ MonoBehaviour:
   rotationSpeed: 20
   screenLimits: {x: 8, y: 4.25}
   life: {fileID: 1348358905}
+  explosion: {fileID: 3023975231893866753, guid: 3ffc0f37ca7bfe24d899b8bf147df2c5, type: 3}
   bulletSideSpawns:
   - {fileID: 938033623}
   - {fileID: 1054161209}

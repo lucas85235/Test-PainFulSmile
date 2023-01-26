@@ -9,6 +9,7 @@ public class ShipAI : MonoBehaviour
     [SerializeField] protected int damage = 10;
     [SerializeField] protected Life life;
     [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected GameObject explosion;
 
     public Life Life { get => life; }
     protected GameObject _player;
@@ -42,6 +43,7 @@ public class ShipAI : MonoBehaviour
 
     private void OnDeath()
     {
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

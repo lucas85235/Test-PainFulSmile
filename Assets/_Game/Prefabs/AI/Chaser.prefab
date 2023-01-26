@@ -128,10 +128,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4b059a08bcf7a247a70c1649d6e20c0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followSpeed: 0.9
+  followSpeed: 1.2
   damage: 15
   life: {fileID: 1837429268586192262}
   agent: {fileID: 2310212958080982650}
+  explosion: {fileID: 3023975231893866753, guid: 3ffc0f37ca7bfe24d899b8bf147df2c5, type: 3}
 --- !u!195 &2310212958080982650
 NavMeshAgent:
   m_ObjectHideFlags: 0

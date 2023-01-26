@@ -131,8 +131,9 @@ MonoBehaviour:
   damage: 10
   life: {fileID: 484014301783516742}
   agent: {fileID: 9071857207271844507}
-  followDistance: 4
-  shootingDistance: 6
+  explosion: {fileID: 3023975231893866753, guid: 3ffc0f37ca7bfe24d899b8bf147df2c5, type: 3}
+  followDistance: 3.5
+  shootingDistance: 5
   shootingInterval: 2
 --- !u!114 &7654314877531364536
 MonoBehaviour:
