@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShipAI : MonoBehaviour
 {
     [SerializeField] protected float followSpeed = 2f;
     [SerializeField] protected int damage = 10;
     [SerializeField] protected Life life;
+    [SerializeField] protected NavMeshAgent agent;
 
     public Life Life { get => life; }
     protected GameObject _player;
@@ -14,12 +16,18 @@ public class ShipAI : MonoBehaviour
     protected virtual void Start()
     {
         _player = GameObject.FindWithTag("Player");
+
+        agent.updateRotation = false;
+        agent.updateUpAxis = false;
+        agent.speed = followSpeed;
+
         life.OnDeath.AddListener(OnDeath);
     }
 
     protected void FollowPlayer()
     {
-        transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, followSpeed * Time.deltaTime);
+        // transform.position = Vector3.MoveTowards(transform.position, _player.transform.position, followSpeed * Time.deltaTime);
+        agent.SetDestination(_player.transform.position);
         LookAtPlayer();
     }
 

@@ -44,7 +44,8 @@ GameObject:
   - component: {fileID: 7654314877531364543}
   - component: {fileID: 7654314877531364539}
   - component: {fileID: 7654314877531364536}
-  m_Layer: 0
+  - component: {fileID: 9071857207271844507}
+  m_Layer: 6
   m_Name: Shooter
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -101,7 +102,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7654314877531364532}
-  m_BodyType: 0
+  m_BodyType: 2
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   followSpeed: 1
   damage: 10
   life: {fileID: 484014301783516742}
+  agent: {fileID: 9071857207271844507}
   followDistance: 4
   shootingDistance: 6
   shootingInterval: 2
@@ -146,6 +148,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 3660828295188923926, guid: 5d5f506e176a1404994b2c5517ba98f9, type: 3}
   bulletSpawn: {fileID: 7654314878447438046}
+--- !u!195 &9071857207271844507
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7654314877531364532}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.325
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 0.5
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &7654314878036666386
 GameObject:
   m_ObjectHideFlags: 0
@@ -335,6 +359,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7654314878165431571}
     m_Modifications:
+    - target: {fileID: 3065949867726029403, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949867787223438, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3065949867787223439, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -345,6 +377,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3065949867787223439, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
       propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949868226183165, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3065949868226183166, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
@@ -358,6 +394,10 @@ PrefabInstance:
     - target: {fileID: 3065949868730513512, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
       propertyPath: m_Name
       value: LifeCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949868730513512, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3065949868730513513, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
       propertyPath: m_Pivot.x
@@ -441,6 +481,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3065949868730513513, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949868843173844, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949868957818147, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065949868979529326, guid: 9f84bbbcbf358c5429daa3120b00950f, type: 3}
+      propertyPath: m_Layer
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
