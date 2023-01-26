@@ -11,7 +11,7 @@ public class Shoot : MonoBehaviour
     {
         if (spaw == null) spaw = bulletSpawn;
         var bullet = Instantiate(bulletPrefab, spaw.position, spaw.rotation);
-        bullet.AddForce(bullet.transform.right * 500f);
+        bullet.AddForce(bullet.transform.right * 400f);
         Destroy(bullet.gameObject, 2f);
     }
 }

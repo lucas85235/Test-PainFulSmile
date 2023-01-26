@@ -10,6 +10,10 @@ public class ShipAI : MonoBehaviour
     [SerializeField] protected Life life;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected GameObject explosion;
+    [SerializeField] private SpriteRenderer hullSprite;
+    [SerializeField] private Sprite[] damgeShipSprites;
+
+    private int currentsHullSprite = 0;
 
     public Life Life { get => life; }
     protected GameObject _player;
@@ -23,6 +27,7 @@ public class ShipAI : MonoBehaviour
         agent.speed = followSpeed;
 
         life.OnDeath.AddListener(OnDeath);
+        life.OnTakeDamage.AddListener(OnTakeDamage);
     }
 
     protected void FollowPlayer()
@@ -45,6 +50,13 @@ public class ShipAI : MonoBehaviour
     {
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
+    }
+
+    private void OnTakeDamage()
+    {
+        var i = Mathf.Clamp(currentsHullSprite, 0, damgeShipSprites.Length);
+        hullSprite.sprite = damgeShipSprites[i];
+        currentsHullSprite++;
     }
 
     protected virtual void OnDestroy()

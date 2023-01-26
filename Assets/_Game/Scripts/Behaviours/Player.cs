@@ -11,9 +11,12 @@ public class Player : MonoBehaviour
     [SerializeField] private Life life;
     [SerializeField] protected GameObject explosion;
     [SerializeField] private List<Transform> bulletSideSpawns;
+    [SerializeField] private SpriteRenderer hullSprite;
+    [SerializeField] private Sprite[] damgeShipSprites;
 
     private float sideShootCoolDown = 1f;
     private bool canSideShoot = true;
+    private int currentsHullSprite = 0;
 
     private Shoot _shoot;
     public Life Life { get => life; }
@@ -22,6 +25,7 @@ public class Player : MonoBehaviour
     {
         _shoot = GetComponent<Shoot>();
         life.OnDeath.AddListener(OnDeath);
+        life.OnTakeDamage.AddListener(OnTakeDamage);
     }
 
     private void Update()
@@ -77,6 +81,13 @@ public class Player : MonoBehaviour
         Instantiate(explosion, transform.position, Quaternion.identity);
         GameManager.Instance.GameOver();
         gameObject.SetActive(false);
+    }
+
+    private void OnTakeDamage()
+    {
+        var i = Mathf.Clamp(currentsHullSprite, 0, damgeShipSprites.Length);
+        hullSprite.sprite = damgeShipSprites[i];
+        currentsHullSprite++;
     }
 
     private void SideShootCoolDown()
